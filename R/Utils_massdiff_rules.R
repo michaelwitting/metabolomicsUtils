@@ -56,7 +56,7 @@ read_table <- function(file, ...) {
     tbl <- read.table(file=file, header=TRUE, ...)
     
     ## check if tbl has the columns name, formula, polarity
-    if (!any(c("name", "formula", "polarity") %in% colnames(tbl))) {
+    if (!all(c("name", "formula", "polarity") %in% colnames(tbl))) {
         stop("table has to contain the columns name, formula and polarity")
     }
     
