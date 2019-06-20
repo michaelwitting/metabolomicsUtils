@@ -24,7 +24,7 @@ formula_to_list <- function(chem_formula) {
   names(formula_list) <- elements
   
   # remove atoms that might have a count of 0
-  formula_list <- formula_list[which(formula_list > 0)]
+  formula_list <- formula_list[which(formula_list >= 0)]
   
   return(formula_list)
 }
@@ -85,4 +85,15 @@ standardize_formula <- function(chem_formula) {
   
   # return
   return(std_chem_formula)
+}
+
+#'
+#'
+#' @export
+formula_to_exactmass <- function(chem_formula, ...) {
+  
+  exact_mass <- rcdk::get.formula(chem_formula, ...)@mass
+  
+  return(exact_mass)
+  
 }
