@@ -429,7 +429,7 @@ adduct_rules_neg <- function() {
                             formula_add = 'C2H3O2',
                             formula_sub = 'C0',
                             charge = -1),
-    '3[M-H]-'      = list(mass_multi = 3 ,
+    '[3M-H]-'      = list(mass_multi = 3 ,
                           mass_add = - rcdk::get.formula('H', charge = 1)@mass,
                           formula_add = 'C0',
                           formula_sub = 'H',
@@ -438,4 +438,28 @@ adduct_rules_neg <- function() {
   ## return values
   return(adduct_list)
   
+}
+
+#'
+#'
+#' @export
+get_adduct_names <- function(mode = c("all", "positive", "negative")) {
+  
+  # get adduct lists
+  adduct_list_neg <- adduct_rules_neg()
+  adduct_list_pos <- adduct_rules_pos()
+  
+  if(mode == "all") {
+    
+    return(c(names(adduct_list_neg), names(adduct_list_pos)))
+    
+  } else if(mode == "positive") {
+    
+    return(names(adduct_list_pos))
+    
+  } else if(mode == "negative") {
+    
+    return(names(adduct_list_neg))
+    
+  }
 }
