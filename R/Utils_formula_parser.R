@@ -24,7 +24,7 @@ formula_to_list <- function(chem_formula) {
   names(formula_list) <- elements
   
   # remove atoms that might have a count of 0
-  formula_list <- formula_list[which(formula_list >= 0)]
+  formula_list <- formula_list[which(formula_list >= 1)]
   
   return(formula_list)
 }

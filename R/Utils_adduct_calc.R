@@ -52,11 +52,11 @@ create_ion_formula <- function(chem_formula, adduct) {
   ion_formula <- formula_subtraction(ion_formula, adduct_rules_all[[adduct]]$formula_sub)
   
   # add brackets and charge
-  if(stringr::str_detect(adduct, "\\+")) {
+  if(stringr::str_detect(adduct, "\\]\\+")) {
     
     ion_formula <- paste0("[", ion_formula, "]", abs(adduct_rules_all[[adduct]]$charge), "+")
     
-  } else if(stringr::str_detect(adduct, "\\-")) {
+  } else if(stringr::str_detect(adduct, "\\]\\-")) {
     
     ion_formula <- paste0("[", ion_formula, "]", abs(adduct_rules_all[[adduct]]$charge), "-")
     
