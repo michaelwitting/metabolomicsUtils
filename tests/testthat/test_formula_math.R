@@ -21,10 +21,10 @@ test_that("correct formula mathematics", {
 test_that("correct exact mass is calculated", {
   
   # non-charged formula
-  expect_equal(formula_to_exactmass("C6H12O6"), 180.0634)
-  expect_equal(formula_to_exactmass("C11H12N2O2"), 204.0899)
+  expect_equal(round(formula_to_exactmass("C6H12O6"), 4), 180.0634)
+  expect_equal(round(formula_to_exactmass("C11H12N2O2"), 4), 204.0899)
   
   # positivly charged formula
-  expect_equal(formula_to_exactmass("C5H14NO", charge = 1), 104.107)
+  expect_equal(round(formula_to_exactmass("C5H14NO", charge = 1), 4), 104.107)
   
 })
