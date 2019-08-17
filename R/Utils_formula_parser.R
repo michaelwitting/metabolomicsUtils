@@ -1,8 +1,18 @@
+#' @title Parse a chemical formula into a named list
+#' 
 #' This function parses a chemical chem_formula into a named vector
+#' 
 #' @param chem_formula Single string with chemical chem_formula
-#' @return Named vector with all elements
+#' 
 #' @examples
+#' library(metabolomicsUtils)
 #' parseChemFormula("C6H12O6")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{list_to_formula}}
+#' @seealso \code{\link{standardize_formula}}
+#' 
 #' @export
 formula_to_list <- function(chem_formula) {
   
@@ -24,19 +34,31 @@ formula_to_list <- function(chem_formula) {
   names(formula_list) <- elements
   
   # remove atoms that might have a count of 0
-  formula_list <- formula_list[which(formula_list >= 1)]
+  formula_list <- formula_list[which(formula_list >= 0)]
   
   return(formula_list)
 }
 
+
+#' @title Create chemical formula from parsed list
+#' 
+#' This function creates a chemical formula from a parsed list
+#' 
 #' This function generates a chemical chem_formula from a named vector of elemental counts
 #' @param formula_list Named list containing the elements as names and their abudance as values
-#' @return Single string with chemical chem_formula
+#' 
 #' @examples
+#' library(metabolomicsUtils)
 #' chem_formula <- list("C" = 6,
 #'                 "H" = 12,
 #'                 "O" = 6)
-#' generateformula(chem_formula)
+#' list_to_formula(chem_formula)
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{formula_to_list}}
+#' @seealso \code{\link{standardize_formula}}
+#' 
 #' @export
 list_to_formula <- function(formula_list) {
   
@@ -45,8 +67,9 @@ list_to_formula <- function(formula_list) {
   
   # first C H N O S P, then elements by alphabetical order
   for(atom in c("C", "H", "N", "O", "S", "P")) {
-    if (!is.na(formula_list[atom])) {
-      if (formula_list[atom] == 1.0) {
+    
+    if (atom %in% names(formula_list) && formula_list[[atom]] > 0) {
+      if (formula_list[[atom]] == 1) {
         chem_formula <- paste0(chem_formula, atom)
       } else {
         chem_formula <- paste0(chem_formula, atom, formula_list[atom])
@@ -60,10 +83,12 @@ list_to_formula <- function(formula_list) {
   
   # iterate through all remaining elements in alphabetical order
   for (atom in sort(restElements)) {
-    if (formula_list[atom] == 1.0) {
-      chem_formula <- paste0(chem_formula, atom)
-    } else {
-      chem_formula <- paste0(chem_formula, atom, formula_list[atom])
+    if(formula_list[[atom]] > 0) {
+      if (formula_list[[atom]] == 1) {
+        chem_formula <- paste0(chem_formula, atom)
+      } else {
+        chem_formula <- paste0(chem_formula, atom, formula_list[atom])
+      }
     }
   }
   
@@ -71,11 +96,21 @@ list_to_formula <- function(formula_list) {
   return(chem_formula)
 }
 
+#' @title Create chemical formula from parsed list
+#' 
 #' This function standardizes a supplied chemical chem_formula according to the Hill notation system.
+#' 
 #' @param chem_formula Single string with chemical chem_formula
-#' @return Single string with standardized chemical formua
+#' 
 #' @examples
+#' library(metabolomicsUtils)
 #' standardizeChemFormula("O6C6H12")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{formula_to_list}}
+#' @seealso \code{\link{list_to_formula}}
+#' 
 #' @export
 standardize_formula <- function(chem_formula) {
   

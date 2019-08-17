@@ -2,22 +2,37 @@
 % Please edit documentation in R/Utils_formula_parser.R
 \name{list_to_formula}
 \alias{list_to_formula}
-\title{This function generates a chemical chem_formula from a named vector of elemental counts}
+\title{Create chemical formula from parsed list
+
+This function creates a chemical formula from a parsed list
+
+This function generates a chemical chem_formula from a named vector of elemental counts}
 \usage{
 list_to_formula(formula_list)
 }
 \arguments{
 \item{formula_list}{Named list containing the elements as names and their abudance as values}
 }
-\value{
-Single string with chemical chem_formula
-}
 \description{
+Create chemical formula from parsed list
+
+This function creates a chemical formula from a parsed list
+
 This function generates a chemical chem_formula from a named vector of elemental counts
 }
 \examples{
+library(metabolomicsUtils)
 chem_formula <- list("C" = 6,
                 "H" = 12,
                 "O" = 6)
-generateformula(chem_formula)
+list_to_formula(chem_formula)
+
+}
+\seealso{
+\code{\link{formula_to_list}}
+
+\code{\link{standardize_formula}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 }

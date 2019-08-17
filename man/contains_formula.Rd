@@ -2,21 +2,32 @@
 % Please edit documentation in R/Utils_formula_math.R
 \name{contains_formula}
 \alias{contains_formula}
-\title{This function checks if one sum formula is contained in another.}
+\title{Check if one formula is contained in another
+
+This function checks if one sum formula is contained in another.}
 \usage{
 contains_formula(target_chem_formula, query_chem_formula)
 }
 \arguments{
-\item{target_formula}{Single string with chemical formula}
+\item{target_chem_formula}{Single string with chemical formula}
 
-\item{query_formula}{Single string with chemical formula that should be contained in the targetFormula}
-}
-\value{
-TRUE or FALSE
+\item{query_chem_formula}{Single string with chemical formula that should be contained in the targetFormula}
 }
 \description{
+Check if one formula is contained in another
+
 This function checks if one sum formula is contained in another.
 }
 \examples{
+library(metabolomicsUtils)
 contains_formula("C6H12O6", "H2O")
+
+}
+\seealso{
+\code{\link{formula_subtration}}
+
+\code{\link{formula_addition}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 }

@@ -2,19 +2,30 @@
 % Please edit documentation in R/Utils_formula_parser.R
 \name{formula_to_list}
 \alias{formula_to_list}
-\title{This function parses a chemical chem_formula into a named vector}
+\title{Parse a chemical formula into a named list
+
+This function parses a chemical chem_formula into a named vector}
 \usage{
 formula_to_list(chem_formula)
 }
 \arguments{
 \item{chem_formula}{Single string with chemical chem_formula}
 }
-\value{
-Named vector with all elements
-}
 \description{
+Parse a chemical formula into a named list
+
 This function parses a chemical chem_formula into a named vector
 }
 \examples{
+library(metabolomicsUtils)
 parseChemFormula("C6H12O6")
+
+}
+\seealso{
+\code{\link{list_to_formula}}
+
+\code{\link{standardize_formula}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 }

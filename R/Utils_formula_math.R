@@ -1,9 +1,19 @@
+#' @title Check if one formula is contained in another
+#' 
 #' This function checks if one sum formula is contained in another.
-#' @param target_formula Single string with chemical formula
-#' @param query_formula Single string with chemical formula that should be contained in the targetFormula
-#' @return TRUE or FALSE
+#' 
+#' @param target_chem_formula Single string with chemical formula
+#' @param query_chem_formula Single string with chemical formula that should be contained in the targetFormula
+#' 
 #' @examples
+#' library(metabolomicsUtils)
 #' contains_formula("C6H12O6", "H2O")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{formula_subtration}}
+#' @seealso \code{\link{formula_addition}}
+#' 
 #' @export
 contains_formula <- function(target_chem_formula, query_chem_formula) {
   
@@ -28,8 +38,22 @@ contains_formula <- function(target_chem_formula, query_chem_formula) {
   return(contains)
 }
 
+#' @title subtract two chemical formula
+#' 
+#' This function subtracts one formula from another.
+#' 
+#' @param target_chem_formula Single string with chemical formula
+#' @param query_chem_formula Single string with chemical formula that should be subtracted from the targetFormula
+#' 
+#' @examples
+#' library(metabolomicsUtils)
+#' formula_subtraction("C6H12O6", "H2O")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
-#'
+#' @seealso \code{\link{contains_formula}}
+#' @seealso \code{\link{formula_addition}}
+#' 
 #' @export
 formula_subtraction <- function(target_chem_formula, query_chem_formula) {
   
@@ -70,8 +94,22 @@ formula_subtraction <- function(target_chem_formula, query_chem_formula) {
   
 }
 
+#' @title add two chemical formula
+#' 
+#' This function add one formula to another.
+#' 
+#' @param target_chem_formula Single string with chemical formula
+#' @param query_chem_formula Single string with chemical formula
+#' 
+#' @examples
+#' library(metabolomicsUtils)
+#' formula_addition("C6H12O6", "H2O")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
-#'
+#' @seealso \code{\link{contains_formula}}
+#' @seealso \code{\link{formula_subtraction}}
+#' 
 #' @export
 formula_addition <- function(target_chem_formula, query_chem_formula) {
   

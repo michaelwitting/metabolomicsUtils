@@ -1,4 +1,13 @@
+#' @title Create list with all adduct calculation rules (all rules)
+#' 
+#' This function returns a list with rules for the calculation of adducts. It is required for the calculation of adduct m/z values from exact masses and the other way round. This list contains all rules for both ionization modes.
+#' 
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
+#' @seealso \code{\link{adduct_rules_pos}}
+#' @seealso \code{\link{adduct_rules_neg}}
+#' @seealso \code{\link{get_adduct_names}}
 #'
 #' @export
 adduct_rules <- function() {
@@ -213,8 +222,17 @@ adduct_rules <- function() {
 }
 
 
-#' Rules for ESI pos mode adduct calculation
+#' @title Create list with all adduct calculation rules (positive ionisation)
 #' 
+#' This function returns a list with rules for the calculation of adducts. It is required for the calculation of adduct m/z values from exact masses and the other way round. This list contains all rules for the positive ionization mode.
+#' 
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{adduct_rules}}
+#' @seealso \code{\link{adduct_rules_neg}}
+#' @seealso \code{\link{get_adduct_names}}
+#'
 #' @export
 adduct_rules_pos <- function() {
   
@@ -362,8 +380,17 @@ adduct_rules_pos <- function() {
   
 }
 
-#' Rules for ESI neg mode adduct calculation
+#' @title Create list with all adduct calculation rules (negative ion model)
 #' 
+#' This function returns a list with rules for the calculation of adducts. It is required for the calculation of adduct m/z values from exact masses and the other way round. This list contains all rules for the negative ionization mode.
+#' 
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{adduct_rules}}
+#' @seealso \code{\link{adduct_rules_pos}}
+#' @seealso \code{\link{get_adduct_names}}
+#'
 #' @export
 adduct_rules_neg <- function() {
   
@@ -405,7 +432,7 @@ adduct_rules_neg <- function() {
                            formula_sub = 'C0',
                            charge = -1),
     '[M+HAc-H]-'    = list(mass_multi = 1,
-                           mass_add = rcdk::get.formula('C2H3O2', charge = 1)@mass,
+                           mass_add = rcdk::get.formula('C2H3O2', charge = -1)@mass,
                            formula_add = 'C2H3O2',
                            formula_sub = 'C0',
                            charge = -1),
@@ -440,7 +467,18 @@ adduct_rules_neg <- function() {
   
 }
 
+#' @title Return current adduct naming
+#' 
+#' This function returns either all or only positive or negative ionization mode adduct names used in this package.
+#' 
+#' @param mode Ionization mode for which the adduct names shall be returned, either \code{all}, \code{positive} or \code{negative}
+#' 
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
+#' @seealso \code{\link{adduct_rules}}
+#' @seealso \code{\link{adduct_rules_pos}}
+#' @seealso \code{\link{adduct_rules_neg}}
 #'
 #' @export
 get_adduct_names <- function(mode = c("all", "positive", "negative")) {
