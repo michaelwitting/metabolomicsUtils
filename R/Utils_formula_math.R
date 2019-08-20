@@ -21,19 +21,12 @@ contains_formula <- function(target_chem_formula, query_chem_formula) {
   target_formula_list <- formula_to_list(target_chem_formula)
   query_formula_list <- formula_to_list(query_chem_formula)
   
-  # get atoms from query formula to check
-  atoms <- names(query_formula_list)
+  formula_concat <- c(target_formula_list, query_formula_list * -1)
   
-  # return value
-  contains <- FALSE
+  # subtract formula from each other
+  result_formula_list <- tapply(formula_concat, names(formula_concat), sum)
   
-  for (atom in atoms) {
-    if (is.na(target_formula_list[atom])) {
-      return(FALSE)
-    } else if (target_formula_list[atom] - query_formula_list[atom] >= 0) {
-      contains <- TRUE
-    }
-  }
+  contains <- all(result_formula_list > 0)
   
   return(contains)
 }
@@ -65,30 +58,10 @@ formula_subtraction <- function(target_chem_formula, query_chem_formula) {
   target_formula_list <- formula_to_list(target_chem_formula)
   query_formula_list <- formula_to_list(query_chem_formula)
   
-  # get all atoms from both formulas
-  atoms <- unique(c(names(target_formula_list), names(query_formula_list)))
+  formula_concat <- c(target_formula_list, query_formula_list * -1)
   
-  # create new object for result
-  result_formula_list <- rep(0, length(atoms))
-  result_formula_list <- setNames(result_formula_list, atoms)
-
-  for(atom in names(result_formula_list)) {
-    
-    target <- if(!is.na(target_formula_list[atom])) {
-      target_formula_list[atom]
-    } else {
-      0
-    }
-    
-    query <- if(!is.na(query_formula_list[atom])) {
-      query_formula_list[atom]
-    } else {
-      0
-    }
-
-    result_formula_list[atom] <- target - query
-      
-  }
+  # subtract formula from each other
+  result_formula_list <- tapply(formula_concat, names(formula_concat), sum)
 
   return(list_to_formula(result_formula_list))
   
@@ -117,30 +90,14 @@ formula_addition <- function(target_chem_formula, query_chem_formula) {
   target_formula_list <- formula_to_list(target_chem_formula)
   query_formula_list <- formula_to_list(query_chem_formula)
   
-  # get all atoms from both formulas
-  atoms <- unique(c(names(target_formula_list), names(query_formula_list)))
+  # parse both formmula
+  target_formula_list <- formula_to_list(target_chem_formula)
+  query_formula_list <- formula_to_list(query_chem_formula)
   
-  # create new object for result
-  result_formula_list <- rep(0, length(atoms))
-  result_formula_list <- setNames(result_formula_list, atoms)
+  formula_concat <- c(target_formula_list, query_formula_list)
   
-  for(atom in names(result_formula_list)) {
-    
-    target <- if(!is.na(target_formula_list[atom])) {
-      target_formula_list[atom]
-    } else {
-      0
-    }
-    
-    query <- if(!is.na(query_formula_list[atom])) {
-      query_formula_list[atom]
-    } else {
-      0
-    }
-    
-    result_formula_list[atom] <- target + query
-    
-  }
+  # subtract formula from each other
+  result_formula_list <- tapply(formula_concat, names(formula_concat), sum)
   
   return(list_to_formula(result_formula_list))
   
