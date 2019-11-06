@@ -85,11 +85,7 @@ formula_subtraction <- function(target_chem_formula, query_chem_formula) {
 #' 
 #' @export
 formula_addition <- function(target_chem_formula, query_chem_formula) {
-  
-  # parse both formmula
-  target_formula_list <- formula_to_list(target_chem_formula)
-  query_formula_list <- formula_to_list(query_chem_formula)
-  
+
   # parse both formmula
   target_formula_list <- formula_to_list(target_chem_formula)
   query_formula_list <- formula_to_list(query_chem_formula)
