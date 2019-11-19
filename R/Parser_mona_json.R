@@ -68,6 +68,86 @@ mona_isolate_precursorMz <- function(x) {
   # find field with precursor m/z
   for(i in 1:length(metaData)) {
     if(metaData[[i]]$name == "precursor m/z") {
+      return(as.numeric(metaData[[i]]$value))
+      break
+    }
+  }
+  
+  return(NA)
+  
+}
+
+#'
+#'
+#' @export
+mona_isolate_collision_energy <- function(x) {
+  
+  # isolate metadata
+  metaData <- x$metaData
+  
+  # find field with precursor m/z
+  for(i in 1:length(metaData)) {
+    if(metaData[[i]]$name == "collision energy") {
+      return(as.numeric(metaData[[i]]$value))
+      break
+    }
+  }
+  
+  return(NA)
+  
+}
+
+#'
+#'
+#' @export
+mona_isolate_ms_level <- function(x) {
+  
+  # isolate metadata
+  metaData <- x$metaData
+  
+  # find field with precursor m/z
+  for(i in 1:length(metaData)) {
+    if(metaData[[i]]$name == "ms level") {
+      return(metaData[[i]]$value)
+      break
+    }
+  }
+  
+  return(NA)
+  
+}
+
+#'
+#'
+#' @export
+mona_isolate_instrument_type <- function(x) {
+  
+  # isolate metadata
+  metaData <- x$metaData
+  
+  # find field with instrument type
+  for(i in 1:length(metaData)) {
+    if(metaData[[i]]$name == "instrument type") {
+      return(metaData[[i]]$value)
+      break
+    }
+  }
+  
+  return(NA)
+  
+}
+
+#'
+#'
+#' @export
+mona_isolate_instrument <- function(x) {
+  
+  # isolate metadata
+  metaData <- x$metaData
+  
+  # find field with instrument type
+  for(i in 1:length(metaData)) {
+    if(metaData[[i]]$name == "instrument") {
       return(metaData[[i]]$value)
       break
     }
