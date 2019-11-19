@@ -46,7 +46,7 @@ massdiff_list <- list(
   
 }
 
-#' @title 
+#' @title Read mass differences from file
 #' @details create a list from a user-input file that is in the same format as 
 #' massdiff_list (see above)
 #' 
