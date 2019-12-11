@@ -17,14 +17,14 @@
 #' @export
 calc_adduct_mass <- function(exact_mass, adduct) {
   
-  adduct_rule_list <- adduct_rules()
+  adduct_rules_all <- adduct_rules_all()
   
-  if(!adduct %in% names(adduct_rule_list)) {
+  if(!adduct %in% names(adduct_rules_all)) {
     stop(paste0("Unknown adduct: ", adduct))
   }
   
-  mass_multi <- adduct_rule_list[[adduct]]$mass_multi
-  mass_add <- adduct_rule_list[[adduct]]$mass_add
+  mass_multi <- adduct_rules_all[[adduct]]$mass_multi
+  mass_add <- adduct_rules_all[[adduct]]$mass_add
   
   ion_mass <- exact_mass * mass_multi + mass_add
   
@@ -51,14 +51,14 @@ calc_adduct_mass <- function(exact_mass, adduct) {
 #' @export
 calc_neutral_mass <- function(ion_mass, adduct) {
   
-  adduct_rule_list <- adduct_rules()
+  adduct_rules_all <- adduct_rules_all()
   
-  if(!adduct %in% names(adduct_rule_list)) {
+  if(!adduct %in% names(adduct_rules_all)) {
     stop(paste0("Unknown adduct: ", adduct))
   }
   
-  mass_multi <- adduct_rule_list[[adduct]]$mass_multi
-  mass_add <- adduct_rule_list[[adduct]]$mass_add
+  mass_multi <- adduct_rules_all[[adduct]]$mass_multi
+  mass_add <- adduct_rules_all[[adduct]]$mass_add
   
   exact_mass <- (ion_mass - mass_add) / mass_multi
   
@@ -86,7 +86,7 @@ calc_neutral_mass <- function(ion_mass, adduct) {
 create_ion_formula <- function(chem_formula, adduct) {
   
   # get all adduct rules
-  adduct_rules_all <- adduct_rules()
+  adduct_rules_all <- adduct_rules_all()
   
   # create ion formula
   ion_formula <- formula_addition(chem_formula, adduct_rules_all[[adduct]]$formula_add)
