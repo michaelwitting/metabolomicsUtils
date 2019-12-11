@@ -50,7 +50,7 @@ massdiff_list <- list(
 #' @details create a list from a user-input file that is in the same format as 
 #' massdiff_list (see above)
 #' 
-read_table <- function(file, ...) {
+read_massdiff_table <- function(file, ...) {
     
     ## read table 
     tbl <- read.table(file=file, header=TRUE, ...)

@@ -24,7 +24,7 @@ contains_formula("C6H12O6", "H2O")
 
 }
 \seealso{
-\code{\link{formula_subtration}}
+\code{\link{formula_subtraction}}
 
 \code{\link{formula_addition}}
 }

@@ -4,17 +4,23 @@
 \alias{adduct_rules_pos}
 \title{Create list with all adduct calculation rules (positive ionisation)
 
-This function returns a list with rules for the calculation of adducts. It is required for the calculation of adduct m/z values from exact masses and the other way round. This list contains all rules for the positive ionization mode.}
+This function returns a list with rules for the calculation of adducts. 
+It is required for the calculation of adduct m/z values from exact masses 
+and the other way round. This list contains all rules for the positive 
+ionization mode.}
 \usage{
 adduct_rules_pos()
 }
 \description{
 Create list with all adduct calculation rules (positive ionisation)
 
-This function returns a list with rules for the calculation of adducts. It is required for the calculation of adduct m/z values from exact masses and the other way round. This list contains all rules for the positive ionization mode.
+This function returns a list with rules for the calculation of adducts. 
+It is required for the calculation of adduct m/z values from exact masses 
+and the other way round. This list contains all rules for the positive 
+ionization mode.
 }
 \seealso{
-\code{\link{adduct_rules}}
+\code{\link{adduct_rules_all}}
 
 \code{\link{adduct_rules_neg}}
 

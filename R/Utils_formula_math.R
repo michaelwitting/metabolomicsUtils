@@ -11,7 +11,7 @@
 #' 
 #' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
-#' @seealso \code{\link{formula_subtration}}
+#' @seealso \code{\link{formula_subtraction}}
 #' @seealso \code{\link{formula_addition}}
 #' 
 #' @export

@@ -4,17 +4,20 @@
 \alias{get_adduct_names}
 \title{Return current adduct naming
 
-This function returns either all or only positive or negative ionization mode adduct names used in this package.}
+This function returns either all or only positive or negative ionization 
+mode adduct names used in this package.}
 \usage{
-get_adduct_names(mode = c("all", "positive", "negative"))
+get_adduct_names(mode = "all")
 }
 \arguments{
-\item{mode}{Ionization mode for which the adduct names shall be returned, either \code{all}, \code{positive} or \code{negative}}
+\item{mode}{Ionization mode for which the adduct names shall be returned, 
+either \code{all}, \code{positive} or \code{negative}}
 }
 \description{
 Return current adduct naming
 
-This function returns either all or only positive or negative ionization mode adduct names used in this package.
+This function returns either all or only positive or negative ionization 
+mode adduct names used in this package.
 }
 \seealso{
 \code{\link{adduct_rules}}
